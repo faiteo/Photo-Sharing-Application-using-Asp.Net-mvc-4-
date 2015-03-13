@@ -1,0 +1,32 @@
+﻿@model PhotoSharingApplication_2015.Models.Photo
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Title</h2> 
+
+
+@if (Model.PhotoFile != null) {  
+     <div class="photo-display">     
+        <img width="800" src="@Url.Action("GetImage", "Photo", new { id=Model.PhotoID})" /> 
+         </div>
+}
+        <p>@Html.DisplayFor(model=> model.Description)</p>
+
+        <p>
+            @Html.DisplayNameFor(model => model.UserName):
+            @Html.DisplayFor(model => model.UserName)
+        </p>
+
+        <p>
+            @Html.DisplayNameFor(model => model.CreationDate):
+            @Html.DisplayFor(model => model.CreationDate)
+        </p>
+
+
+        @Html.Action("_CommentsForPhoto", "Comment", new { PhotoID = Model.PhotoID})
+
+        <p>@Html.ActionLink("Back to Photo List", "Index")</p>
+
+

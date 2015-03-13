@@ -1,0 +1,33 @@
+﻿@model PhotoSharingApplication_2015.Models.Comment
+
+@Html.ValidationSummary(true)
+
+<div class="add-comment-tool">
+    <div>
+        <span class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </span>
+
+        <span class="editor-field">
+        @Html.EditorFor(model => model.Subject)
+        @Html.ValidationMessageFor(model => model.Subject)
+        </span>
+    </div>
+
+    <div>
+        <span class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </span>
+
+        <span class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </span>
+    </div>
+
+   <p>
+       <input type="submit" value="Add a Comment" />
+   </p>
+   
+
+</div>

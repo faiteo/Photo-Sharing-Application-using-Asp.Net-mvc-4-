@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PhotoSharingApplication_2015.Models.Photo>
+
+
+@*@Html.DropDownList("Choose Filter", new List<SelectListItem>
+
+{
+    new SelectListItem { Text = "Filter by latest", Value = "1"},
+    new SelectListItem { Text = "Filter by User Name", Value = "2"}
+})*@
+
+    @foreach (var item in Model)
+    {
+     <div class="photo-index-card">
+        <h3>"@item.Title"</h3>
+     
+        @if (@item.PhotoFile != null)
+        {
+            <img class="photo-index-card-img" src="@Url.Action("GetImage", "Photo", new { id = item.PhotoID})" />
+        }
+        <div class="photo-metadata">
+           
+          <div>
+            <span class="display-label"> Created By: </span>
+            <span class="display-field">@Html.DisplayFor(model => item.UserName)</span>
+          </div>
+
+          <div>
+            <span class="display-label">Created On: </span>
+            <span class="display-field">@Html.DisplayFor(model => item.CreationDate)</span>
+          </div>
+
+  </div>
+
+            @Html.ActionLink("Detail", "Detail", new { id = item.PhotoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
+       
+
+  </div>
+
+    }
+
